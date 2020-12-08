@@ -51,7 +51,8 @@ class AWRETestCase(unittest.TestCase):
 
     @staticmethod
     def save_protocol(name, protocol_generator, silent=False):
-        filename = os.path.join(tempfile.gettempdir(), name + ".proto")
+        #filename = os.path.join(tempfile.gettempdir(), name + ".proto")
+        filename = os.path.join("tmp/messages", name + ".proto")
         if isinstance(protocol_generator, ProtocolGenerator):
             protocol_generator.to_file(filename)
         elif isinstance(protocol_generator, ProtocolAnalyzer):

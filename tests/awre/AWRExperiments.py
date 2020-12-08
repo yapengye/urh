@@ -400,7 +400,7 @@ class AWRExperiments(AWRETestCase):
                 accuracies["protocol {}".format(protocol_nr)].append(accuracy)
 
         self.__plot(num_messages, accuracies, xlabel="Number of messages", ylabel="Accuracy in %", grid=True)
-        self.__export_to_csv("/tmp/accuray-vs-messages", num_messages, accuracies)
+        self.__export_to_csv("tmp/yyp", num_messages, accuracies)
 
     def test_against_error(self):
         Engine._DEBUG_ = False
@@ -433,8 +433,8 @@ class AWRExperiments(AWRETestCase):
                     title=" Accuracy of unbroken vs percentage of broken messages",
                     xlabel="Broken messages in %",
                     ylabel="Accuracy in %", grid=True)
-        self.__export_to_csv("/tmp/accuray-vs-error", num_broken_messages, accuracies, relative=num_messages)
-        self.__export_to_csv("/tmp/accuray-vs-error-without-broken", num_broken_messages, accuracies_without_broken,
+        self.__export_to_csv("tmp/accuray-vs-error", num_broken_messages, accuracies, relative=num_messages)
+        self.__export_to_csv("tmp/accuray-vs-error-without-broken", num_broken_messages, accuracies_without_broken,
                              relative=num_messages)
 
     def test_performance(self):
@@ -500,7 +500,7 @@ class AWRExperiments(AWRETestCase):
                 performances["{}".format(protocol_name)].append(mean_performance)
 
         self.__plot(num_messages, performances, xlabel="Number of messages", ylabel="Time in seconds", grid=True)
-        self.__export_to_csv("/tmp/performance.csv", num_messages, performances)
+        self.__export_to_csv("tmp/performance.csv", num_messages, performances)
 
     @staticmethod
     def __export_to_csv(filename: str, x: list, y: dict, relative=None):
